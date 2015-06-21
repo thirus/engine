@@ -1,0 +1,25 @@
+= locomotive_form_for @page, url: update_all_editable_elements_path(current_site, @page), remote: true, html: { multipart: true }, defaults: { placeholder: false, hint: false } do |f|
+
+  div class="container-fluid main" role='main'
+    div class="row header-row"
+      div class="col-md-12"
+        h1= @page.title
+
+    div class="row info-row"
+      div class="col-md-7"
+        p
+          span.fullpath= '/' + @page.fullpath
+
+      div class="col-md-5"
+        p class="text-right"
+          = link_to edit_page_path(current_site, @page) do
+            i class="fa fa-gear"
+            | Settings
+
+          = f.action
+
+  div class="scrollable"
+    div class="container-fluid"
+      div class="row"
+        div class="col-md-12"
+          = render 'form', f: f

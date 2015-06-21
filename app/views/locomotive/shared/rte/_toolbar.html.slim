@@ -1,0 +1,53 @@
+div class="wysihtml5-toolbar" id="wysihtml5-toolbar-#{wysihtml5_prefix}" style='display: none'
+
+  span class="wysihtml5-toolbar-group"
+    a*{ 'data-wysihtml5-command' => 'bold' }
+      i.fa.fa-bold
+    a*{ 'data-wysihtml5-command' => 'italic' }
+      i.fa.fa-italic
+    a*{ 'data-wysihtml5-command' => 'underline' }
+      i.fa.fa-underline
+    a*{ 'data-wysihtml5-command' => 'strike' }
+      i.fa.fa-strikethrough
+
+  span class="wysihtml5-toolbar-group"
+    a*{ 'data-wysihtml5-command' => 'justifyLeft' }
+      i.fa.fa-align-left
+    a*{ 'data-wysihtml5-command' => 'justifyCenter' }
+      i.fa.fa-align-center
+    a*{ 'data-wysihtml5-command' => 'justifyRight' }
+      i.fa.fa-align-right
+    a*{ 'data-wysihtml5-command' => 'justifyFull' }
+      i.fa.fa-align-justify
+
+  span class="wysihtml5-toolbar-group"
+    a*{ 'data-wysihtml5-command' => 'insertUnorderedList' }
+      i.fa.fa-list-ul
+    a*{ 'data-wysihtml5-command' => 'insertOrderedList' }
+      i.fa.fa-list-ol
+    a.style
+      i.fa.fa-paragraph
+
+    div class="style-dialog-content" style='display: none'
+      - %w(H1 H2 H3 H4 H5 H6 P).each do |style|
+        a*{ 'data-wysihtml5-command' => 'formatBlock', 'data-wysihtml5-command-value' => style.downcase }
+          = style
+        br
+
+      a*{ 'data-wysihtml5-command' => 'formatBlock', 'data-wysihtml5-command-value' => 'blockquote' }
+        i.fa.fa-quote-right
+      br
+
+    a*{ 'data-wysihtml5-command' => 'createLink' }
+      i.fa.fa-chain
+    = link_popover
+    a*{ 'data-wysihtml5-command' => 'removeLink' }
+      i.fa.fa-chain-broken
+
+    a*{ 'data-url' => content_assets_path, 'data-wysihtml5-command' => 'insertFile' }
+      i.fa.fa-file-o
+    = image_popover
+
+  span class="wysihtml5-toolbar-group"
+    a*{ 'data-wysihtml5-action' => 'change_view' }
+      i.fa.fa-code
